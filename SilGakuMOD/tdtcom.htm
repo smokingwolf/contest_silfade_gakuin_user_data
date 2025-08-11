@@ -1,0 +1,130 @@
+<HTML>
+<HEAD>
+<STYLE TYPE="text/css">
+<meta charset="UTF-8">
+<META http-equiv="Content-Style-Type" content="text/css">
+<!--
+/* ----- コメント ----- */
+BODY.cbg{
+        background-color:#dfdfff;
+        color:#434356;
+	font-size:11px;
+}
+A:link   { color:#FFCC66; }
+A:visited{ color:#FFCC66; }
+A:hover  { color:#FF6633; background:#FFCC66; }
+
+/* ××へのコメントを追加 */
+.cft{
+	color:#aa3333;
+	font-size:13px;
+	font-weight:normal;
+	margin: 0px 0px 0px 20px;
+}
+
+/* コメントフォーム */
+.cfm{
+	color:#000000;
+	margin: 0px 0px 0px 30px;
+	font-size:13px;
+	font-style:normal;
+}
+
+/* ××へのコメント一覧 */
+.cst{
+	color:#000000;
+	font-size:15px;
+	font-weigt:normal;
+	border: thin solid #5555FF;
+	border-width: 0px 0px 1px 10px;
+	margin: 2px 250px 5px 20px;
+	padding: 0px 0px 0px 10px;
+}
+
+/* コメント：全体 */
+.ctx{
+	color:#000000;
+	font-size:12px;
+	font-style:normal;
+	font-weight:normal;
+	margin: 0px 0px 0px 40px;
+}
+/* コメント：時刻 */
+.ctt{
+	color:#0000FF;
+	font-size:11px;
+	font-style:normal;
+	font-weight:normal;
+}
+
+/* コメント：名前 */
+.ctn{
+	color:#FF3333;
+	font-size:12px;
+	font-style:normal;
+	font-weight:bold;
+}
+
+/* コメント：単語 */
+.ctw{
+	color:#000000;
+	font-size:12px;
+	font-style:italic;
+	font-weight:normal;
+}
+
+/* コメント：文章 */
+.ctc{
+	color:#000000;
+	font-size:12px;
+	font-style:normal;
+	font-weight:normal;
+}
+
+-->
+</STYLE>
+<TITLE></TITLE>
+</HEAD>
+<BODY CLASS="cbg">
+
+
+<!-- ********** 変更不可 ********** -->
+#CHK:body#
+
+
+
+<!-- ********** 投稿用フォーム ********** -->
+<TEMPLATE_PARTS NAME="comform">
+<FORM method="post" action="tdpcom.cgi">
+<DIV CLASS="cft">■「#CHK:word#」 へのコメントを投稿</DIV>
+<DIV CLASS="cfm">
+<INPUT TYPE="hidden" NAME="cwid" VALUE="#CHK:cwid#">
+<INPUT TYPE="hidden" NAME="mode" VALUE="write">
+名前<INPUT TYPE="text" NAME="cname" VALUE="#CHK:cname#" SIZE="10"><BR>
+一言<INPUT TYPE="text" NAME="ccom" VALUE="" SIZE="50">
+<INPUT TYPE="submit" VALUE="投稿">
+</DIV>
+</FORM>
+<HR NOSHADE SIZE="1">
+</TEMPLATE>
+
+
+
+<TEMPLATE_PARTS NAME="comment">
+<A NAME="#CHK:cwid#"></A>
+<DIV CLASS="cst">#CHK:wordtitle#コメント</DIV><BR>
+#CHK:coms#
+</TEMPLATE>
+
+<TEMPLATE_PARTS NAME="coms">
+<DIV CLASS="ctx">
+<SPAN CLASS="ctt"><!--[#CHK:ctime#]--></SPAN>
+<SPAN CLASS="ctn"><B>#CHK:cname#</B></SPAN>
+<SPAN CLASS="ctc">：#CHK:ccom#</SPAN>
+<SPAN CLASS="ctw">#CHK:cword#</SPAN>
+</DIV>
+</TEMPLATE_PARTS>
+
+
+</BODY>
+</HTML>

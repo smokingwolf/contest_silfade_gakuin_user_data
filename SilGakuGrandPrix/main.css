@@ -1,0 +1,449 @@
+*{margin:0px;padding:0px;}
+
+html{
+}
+
+
+
+body{
+	width:720px;
+	margin:20px auto;
+	padding: 10px 0px;
+    text-align:left;
+    font-size:12px;
+    color:#666686;
+    background-color: #FFFFFF;
+    line-height: 150%;
+    font-family:'ＭＳ Ｐゴシック';
+
+  SCROLLBAR-FACE-COLOR:#c3c3d5;
+  SCROLLBAR-HIGHLIGHT-COLOR: #fafaff;
+  SCROLLBAR-SHADOW-COLOR: #fafaff;
+
+  SCROLLBAR-3DLIGHT-COLOR:#535385;
+  SCROLLBAR-ARROW-COLOR: #535385;
+
+  SCROLLBAR-TRACK-COLOR: #8383c5;
+
+  SCROLLBAR-DARKSHADOW-COLOR: #535385;
+}
+
+A:LINK,A:VISITED{color:#ef486c;text-decoration : underline;}
+A:HOVER,A:ACTIVE{color : #ff688c;text-decoration : underline;}
+
+A.white:LINK,A.white:VISITED{color:#ffffff;text-decoration:none;}
+A.white:HOVER,A.white:ACTIVE{color:#ffffff;text-decoration:underline;}
+
+A.g:LINK,A.g:VISITED{color:#38b68c;text-decoration:underline;}
+A.g:HOVER,A.g:ACTIVE{color:#68d6ac;text-decoration:underline;}
+
+A.blue:LINK,A.blue:VISITED{color:#5858f6;text-decoration:underline; text-shadow:0 0 8px #aaf;}
+A.blue:HOVER,A.blue:ACTIVE{color:#a8a8f6;text-decoration:underline; text-shadow:0 0 8px #aaf;}
+
+
+/* 青部分に存在するリンク用カラー */
+A.rred:LINK,A.rred:VISITED{color:#af385c;text-decoration : underline;}
+A.rred:HOVER,A.rred:ACTIVE{color : #bf688c;text-decoration : underline;}
+
+
+
+
+H1,H2,H3{
+	font-weight: bold;
+}
+
+H1{
+	background-image: url(h1.jpg);
+	font-size: 28px;
+}
+
+H1 a{
+	display: block;
+	height:68px;
+	padding-top:15px;
+	padding-left: 14px;
+	color: #ffffff;
+	text-decoration:none;
+}
+
+
+B.x {
+	font-size: 14px;
+	color: #ff4444;
+
+}
+
+H1 a:hover{
+	color: #ffffff;
+	text-decoration:underline;
+}
+
+
+H2{
+	font-size: 180%;
+	margin:10px 4px;
+	color:#f6384c;
+	padding:6px;
+	border-top:1px solid #a3a3e5;
+	border-bottom:1px solid #a3a3e5;
+}
+
+
+/* indexは右に作品一覧が入るので線を減らす */
+H2.index{
+	font-size: 140%;
+	margin:10px 170px 10px 0px;
+	padding:3px;
+	border-bottom:1px solid #a3a3e5;
+	color:#384cf6;
+}
+
+
+
+H3{
+	font-size: 100%;
+	color: #336699;
+}
+
+.big{
+    line-height: 180%;
+	font-size: 18px;
+	border-top:6px;
+}
+
+.close{
+    line-height: 120%;
+}
+
+HR{
+	clear: both;
+	margin-bottom: 12px;
+}
+
+TABLE{
+	border-top:1px solid #a3a3e5;
+	border-left:1px solid #a3a3e5;
+}
+
+TD{
+	border-right:1px solid #a3a3e5;
+	border-bottom:1px solid #a3a3e5;
+	padding:4px 10px;
+	font-size: 12px;
+}
+
+TD.vote{
+	border-right:1px solid #a3a3e5;
+	border-bottom:1px solid #a3a3e5;
+	padding:1px 2px;
+	font-size: 11px;
+}
+
+TABLE.noborder{
+	border-top:0px hidden;
+	border-right:0px hidden;
+	border-left:0px hidden;
+	border-bottom:0px hidden;
+}
+
+TD.noborder{
+	border-right:0px hidden;
+	border-bottom:0px hidden;
+	padding:0px 0px;
+}
+
+TABLE.x{
+	border-top:0px hidden;
+	border-right:0px hidden;
+	border-left:0px hidden;
+	border-bottom:0px hidden;
+	border-top:1px solid #a3a3e5;
+	border-left:1px solid #a3a3e5;
+}
+TD.x{
+	border-right:0px hidden;
+	border-bottom:0px hidden;
+	border-right:1px solid #a3a3e5;
+	border-bottom:1px solid #a3a3e5;
+	padding:0px 0px;
+}
+
+
+.sn{
+	float: left;
+}
+
+.sn IMG{
+	width: 280px;
+	height: 208px;
+	float:left;
+}
+
+.snr{
+	float: right;
+}
+
+
+.snr IMG{
+	width: 320px;
+	height: 240px;
+	margin-right: 320px;
+	float:left;
+}
+
+B.rank{
+	font-size:18px;
+}
+
+B.high{
+	color: #dd4444;
+}
+
+B.high2{
+	color: #4444ff;
+}
+
+
+DL.entry{
+	height:250px;
+	padding:5px;
+	overflow: auto;
+	margin-bottom: 12px;
+}
+
+
+/* 作品一覧を出してるときはwidth:480px;なければwidth:550px; */
+
+DL.whatnew{
+	height:230px;
+	width:550px;
+	padding:5px;
+	overflow: auto;
+	margin-bottom: 12px;
+	border:1px #ddddff solid;
+}
+
+DL.result{
+	
+	height:190px;
+	width: 356px;
+	padding:8px;
+	overflow: auto;
+	margin-bottom: 10px;
+	border:1px #aaaadd dashed;
+}
+
+DL.comment{
+	height:180px;
+	width:640px;
+	overflow: auto;
+	border:1px #ddddff solid;
+}
+
+
+
+
+DT{
+	color: #9999aa;
+  line-height: 105%;
+}
+
+
+DT B{
+	color: #666686;
+	padding-left: 4px;
+}
+
+.title{
+	font-weight: bold;
+	font-size: 130%;
+}
+
+DD{
+	padding-left: 4px;
+  line-height: 135%;
+}
+
+a{
+	text-decoration:underline;
+}
+
+a:hover {
+    text-decoration:none;
+}
+
+
+#head{
+	clear: both;
+}
+
+#middle{
+	clear: both;
+	height: 100%;
+	padding: 10px;
+	border-left: 1px solid #a3a3e5;
+	border-right: 1px solid #a3a3e5;
+}
+
+
+
+
+#foot{
+	clear: both;
+	height: 70px;
+	background-color: #a3a3e5;
+}
+
+UL.menu{
+    list-style:none;
+    width:100%;
+    text-align:center;
+    font-weight: bold;
+    font-size:16px;
+}
+
+
+.selected{
+	text-decoration:none;
+	display:block;
+	padding:4px 0px;
+	color: #ffffff;
+}
+
+.menu LI{
+	display:;
+	width:25%;
+	margin:0px;
+	float:left;
+	text-align:center;
+}
+
+
+LI.menu1 {
+	background-color: #8383e5;
+}
+LI.menu2 {
+	background-color: #9494fa;
+}
+LI.menu3 {
+	background-color: #fa9494;
+}
+
+.menu a{
+	text-decoration:none;
+	display:block;
+	padding:4px 0px;
+	color: #ffffff;
+/*	background-color: #a3a3e5;  */
+}
+
+.menu a:hover{
+	text-decoration:none;
+	color: #333333;
+	display:block;
+	background-color: #ceceff;
+}
+
+.fred{color:#ef486c;}
+
+
+
+
+.sn2 IMG{
+	width: 120px;
+	height: 90px;
+	float:left;
+}
+
+DL.result2{
+	height:102px;
+	padding:2px;
+	overflow: auto;
+	margin-bottom: 2px;
+	padding: 6px 0px 0px 0px;
+	border:1px #aaaadd dashed;
+}
+DL.comment2{
+	height:90px;
+	width:100%;
+	overflow: auto;
+	border:1px #ddddff solid;
+	margin-bottom: 10px;
+}
+
+
+#resultname{
+	/*--height: 20px;--*/
+	padding: 8px;
+	width: 640px;
+	/*--background-color: #afafdd;--*/
+	background-color: #9f9fdd;
+	color:#ffffff;
+}
+
+#resultname2{
+	padding: 4px;
+	background-color: #9f9fdd;
+	color:#ffffff;
+}
+
+
+
+
+#resultname-1{
+	padding: 8px;
+	width: 640px;
+	background-color: #cd8f8f;
+	color:#ffffff;
+}
+
+#resultname2-1{
+	padding: 4px;
+	background-color: #cd8f8f;
+	color:#ffffff;
+}
+
+#resultname-2{
+	padding: 8px;
+	width: 640px;
+	background-color: #7fbd7f;
+	color:#ffffff;
+}
+
+#resultname2-2{
+	padding: 4px;
+	background-color: #7fbd7f;
+	color:#ffffff;
+}
+
+
+
+
+#resultname-3{
+	padding: 8px;
+	width: 640px;
+	background-color: #9d6f9d;
+	color:#ffffff;
+}
+
+#resultname2-3{
+	padding: 4px;
+	background-color: #9d7f9d;
+	color:#ffffff;
+}
+
+
+
+#resultname-4{
+	padding: 8px;
+	width: 640px;
+	background-color: #6fbdbd;
+	color:#ffffff;
+}
+
+#resultname2-4{
+	padding: 4px;
+	background-color: #7fbdbd;
+	color:#ffffff;
+}
+

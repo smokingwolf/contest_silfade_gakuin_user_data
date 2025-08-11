@@ -1,0 +1,473 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<META http-equiv="Content-Style-Type" content="text/css">
+
+<TITLE>T-Dictionary - Admin</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#FFCC66" TEXT="#000000" LINK="#3300FF" VLINK="#3300FF">
+<FONT SIZE="2">
+
+[<A HREF="#CHK:htmlurl#/index.html" TARGET="_top">辞書トップ</A>]
+[<A href="tdpadm.cgi">管理トップ</A>]
+[<A href="tdpusr.cgi">ユーザトップ</A>]
+[<A HREF="http://www.mytools.net/" TARGET="_blank">ヘルプ</A>]
+<P>
+
+<TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="5"><TR><TH BGCOLOR="#FF0000" ALIGN="center"><FONT SIZE="3" COLOR="#FFFFFF">■ T-Dictionary 管理用ページ ■</FONT></TH></TR></TABLE><BR>
+
+<HR SIZE="0">
+<B>作業状況：</B>#CHK:msg#
+<HR SIZE="0">
+
+
+<!-- ********** トップ ********** -->
+<!--
+<TEMPLATE TYPE="top">-->
+<FORM method="post" enctype="application/x-www-urlencoded" action="tdpadm.cgi">
+<TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="5"><TR><TH BGCOLOR="#FF0000" ALIGN="center"><FONT SIZE="2" COLOR="#FFFFFF">◆ ログイン ◆</FONT></TH></TR></TABLE><BR>
+<DIV ALIGN="center">
+<TABLE WIDTH="50%" BORDER="0" CELLPADDING="3" CELLSPACING="0">
+<TR>
+  <TD BGCOLOR="#FF6600"><FONT SIZE="2">
+  パスワード：<INPUT TYPE="password" NAME="pwd" SIZE="15" VALUE="#CHK:pwd#">　
+  <INPUT TYPE="submit" VALUE="作業実行">
+  </FONT>
+</TD>
+<TR>
+  <TD BGCOLOR="#FFFFCC"><FONT SIZE="2">
+  <INPUT TYPE="radio" NAME="mode" VALUE="check" checked>登録依頼の処理 （<FONT COLOR="#FF0000"><B>登録待ち：#CHK:regno#件</B></FONT>）<BR>
+  <INPUT TYPE="radio" NAME="mode" VALUE="word">単語管理<BR>
+  <INPUT TYPE="radio" NAME="mode" VALUE="com">コメント管理<BR>
+  <INPUT TYPE="radio" NAME="mode" VALUE="genre">分類管理<BR>
+  <INPUT TYPE="radio" NAME="mode" VALUE="user">ユーザ管理<BR>
+  <INPUT TYPE="radio" NAME="mode" VALUE="status">ファイルの整合性チェック<BR>
+  <INPUT TYPE="radio" NAME="mode" VALUE="sort">単語の再ソート<BR>
+  <INPUT TYPE="radio" NAME="mode" VALUE="update">ページを更新する<BR>
+  </FONT></TD>
+</TR>
+</TABLE>
+</DIV>
+</FORM>
+<DIV ALIGN="center">
+<TABLE BORDER="1" CELLPADDING="3" CELLSPACING="0" BGCOLOR="#FFFFFF">
+<TR><TH COLSPAN="2"><FONT SIZE="2" COLOR="#009900">【現在の辞書の状態】 #CHK:pagestatus#</FONT></TH></TR>
+<TR><TH COLSPAN="2"><FONT SIZE="2" COLOR="#009900">各ファイルの更新時間</FONT></TH></TR>
+<TR>
+<TD><FONT SIZE="2" COLOR="#009900">ＨＴＭＬ</FONT></TD>
+<TD><FONT SIZE="2" COLOR="#000000">#CHK:outup#</FONT></TD>
+</TR>
+<TR>
+<TD><FONT SIZE="2" COLOR="#009900">辞書データ</FONT></TD>
+<TD><FONT SIZE="2" COLOR="#CHK:diccol#">#CHK:dicup#</FONT></TD>
+</TR>
+<TR>
+<TD><FONT SIZE="2" COLOR="#009900">コメントデータ</FONT></TD>
+<TD><FONT SIZE="2" COLOR="#CHK:comcol#">#CHK:comup#</FONT></TD>
+</TR>
+<TR>
+<TD><FONT SIZE="2" COLOR="#009900">分類データ</FONT></TD>
+<TD><FONT SIZE="2" COLOR="#CHK:gnrcol#">#CHK:gnrup#</FONT></TD>
+</TR>
+</TABLE>
+</DIV>
+
+</TEMPLATE>
+
+
+
+
+
+<!-- ******************** 単語登録、修正、削除 ******************** -->
+<!--
+<TEMPLATE TYPE="word">-->
+
+<TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="5"><TR><TH BGCOLOR="#FF0000" ALIGN="center"><FONT SIZE="2" COLOR="#FFFFFF">◆ ページ登録、修正、削除 ◆</FONT></TH></TR></TABLE><BR>
+<FORM name="w" method="post" enctype="application/x-www-urlencoded" action="tdpadm.cgi">
+<INPUT TYPE="hidden" NAME="pwd" VALUE="#CHK:pwd#">
+<INPUT TYPE="hidden" NAME="wid" VALUE="#CHK:wid#">
+<INPUT TYPE="hidden" NAME="wmode" VALUE="#CHK:wmode#">
+<INPUT TYPE="hidden" NAME="mode" VALUE="word">
+
+<DIV ALIGN="center">
+<TABLE BGCOLOR="#FFFFFF" BORDER="1" CELLPADDING="3" CELLSPACING="0">
+<TR><TH BGCOLOR="#AA0000" NOWRAP><FONT SIZE="2" COLOR="#FFFFFF">
+単語<INPUT TYPE="text" NAME="wnid" SIZE="20"> を
+<INPUT TYPE="submit" NAME="wread" VALUE="読み込み">
+<INPUT TYPE="submit" NAME="wnew" VALUE="新規登録">
+　<INPUT TYPE="submit" NAME="back" VALUE="↑ 戻る">
+</FONT></TH></TR>
+</TABLE>
+</DIV>
+</FORM>
+<P>
+
+
+
+<FORM name="w" method="post" enctype="multipart/form-data" action="tdpadm.cgi">
+<INPUT TYPE="hidden" NAME="pwd" VALUE="#CHK:pwd#">
+<INPUT TYPE="hidden" NAME="wid" VALUE="#CHK:wid#">
+<INPUT TYPE="hidden" NAME="wmode" VALUE="#CHK:wmode#">
+<INPUT TYPE="hidden" NAME="mode" VALUE="word">
+
+<DIV ALIGN="center">
+<TABLE WIDTH="95%" BGCOLOR="#FFFFFF" BORDER="1" CELLPADDING="3" CELLSPACING="0">
+<TR><TH BGCOLOR="#FF0000" NOWRAP COLSPAN="2"><FONT SIZE="3" COLOR="#FFFFFF">■ #CHK:whead# ■</FONT></TH></TR>
+<TR><TH BGCOLOR="#FF6600" NOWRAP><FONT SIZE="2">登録者ID</FONT></TH>
+<TD NOWRAP><FONT SIZE="2"><INPUT TYPE="text" NAME="wuid" SIZE="20" VALUE="#CHK:uid#"></FONT></TD></TR>
+<TR><TH BGCOLOR="#FF6600" NOWRAP><FONT SIZE="2">単語</FONT></TH>
+<TD NOWRAP><FONT SIZE="2"><INPUT TYPE="text" NAME="wword" SIZE="30" VALUE="#CHK:word#"></FONT>　優秀評価（★）<INPUT type="text" NAME="star" VALUE="#CHK:star#"></TD></TR>
+<TR><TH BGCOLOR="#FF6600" NOWRAP><FONT SIZE="2">よみがな</FONT></TH>
+<TD NOWRAP><FONT SIZE="2"><INPUT TYPE="text" NAME="wruby" SIZE="40" VALUE="#CHK:ruby#"></FONT></TD></TR>
+<TR><TH BGCOLOR="#FF6600" NOWRAP><FONT SIZE="2">関連URL</FONT></TH>
+<TD NOWRAP><FONT SIZE="2"><INPUT TYPE="text" NAME="wurl" SIZE="40" VALUE="#CHK:url#"></FONT></TD></TR>
+<TR><TH BGCOLOR="#FF6600" NOWRAP><FONT SIZE="2">分類</FONT></TH>
+<TD NOWRAP>
+<FONT SIZE="2">
+#CHK:wgenres#
+</FONT></TD></TR>
+<TR><TH BGCOLOR="#FF6600" NOWRAP><FONT SIZE="2">関連語</FONT></TH>
+<TD NOWRAP><FONT SIZE="2">
+<FONT COLOR="#FF0000">
+※ <B>ふりがな</B>で入力。半角カンマ「<B>,</B>」で区切って複数記述可。<BR>
+※ 同音異義語は後ろに「(<B>識別番号</B>)」を付ける。（例） きじ<B>(1)</B>（←半角で）<BR>
+</FONT>
+<INPUT TYPE="text" NAME="wrelrubys" SIZE="40" VALUE="#CHK:wrelruby#"></FONT></TD></TR>
+<TR><TH BGCOLOR="#FF6600" NOWRAP><FONT SIZE="2">画像</FONT></TH>
+<TD NOWRAP><FONT SIZE="2">
+現在：#CHK:imglink#
+<INPUT TYPE="file" NAME="wimage" SIZE="20"><BR>
+サイズ：ヨコ<INPUT TYPE="text" NAME="wimgx" SIZE="4" VALUE="#CHK:imgx#">×タテ<INPUT TYPE="text" NAME="wimgy" SIZE="4" VALUE="#CHK:imgy#">
+<INPUT TYPE="checkbox" NAME="wimgdel" VALUE="1">削除
+</FONT></TD></TR>
+<TR><TH BGCOLOR="#FF6600" NOWRAP><FONT SIZE="2">意味</FONT></TH>
+<TD NOWRAP><FONT SIZE="2">#CHK:wmeans#
+<FONT COLOR="#FF0000">※ 意味をフォームの数以上登録したい場合は、一旦登録してからもう一度その単語の修正をしてください。</FONT><BR>
+<FONT COLOR="#0000AA">※ 文章内の文字を他の単語へリンクさせることができます：</FONT><BR>
+<FONT COLOR="#000000">
+&nbsp;&nbsp;＜書式＞ <B>#LINK:</B><I>[ふりがな]</I><B>:</B><I>[リンク文字列]</I><B>#</B> <FONT COLOR="#FF0000">（区切り文字は半角コロン ":"）</FONT><BR>
+&nbsp;&nbsp;（例）「家康は#LINK:とよとみひでよし:秀吉#の死後…」 → 「家康は<A HREF=".">秀吉</A>の死後…」
+</FONT>
+
+</FONT></TD></TR>
+<TR><TH BGCOLOR="#FF6600" NOWRAP><FONT SIZE="2">関連File</FONT></TH>
+<TD NOWRAP><FONT SIZE="2">#CHK:wfiles#
+<FONT COLOR="#FF0000">※ 「現在」は現時点でアップロードされているファイル。新しいファイルをアップロードすると消えます。</FONT>
+</FONT></TD></TR>
+<TR><TH BGCOLOR="#FF6600" NOWRAP><FONT SIZE="2">更新日</FONT></TH>
+<TD NOWRAP><FONT SIZE="2">
+<INPUT TYPE="radio" NAME="wdate" VALUE="#CHK:stime#" CHECKED>元のまま
+(#CHK:wdate#) 
+<INPUT TYPE="radio" NAME="wdate" VALUE="0">最新にする　
+</FONT>　
+  </TD></TR>
+<TR><TD BGCOLOR="#FF6600" NOWRAP ALIGN="center" COLSPAN="2"><FONT SIZE="2">
+#CHK:wdcs#
+<INPUT TYPE="checkbox" NAME="wdel" VALUE="1">この単語を削除　　　
+#CHK:wdce#
+<INPUT TYPE="submit" NAME="wordexec" VALUE="作業実行">
+<INPUT TYPE="reset" VALUE="書き直し">
+</FONT></TD></TR>
+</TABLE>
+</DIV>
+
+<TEMPLATE_PARTS NAME="wmeans">
+<FONT COLOR="#FF0000"><B>[#CHK:mcnt#:#CHK:mstatus#]</B></FONT>
+<INPUT TYPE="hidden" NAME="wm#CHK:mcnt#_mid" VALUE="#CHK:mid#">
+#CHK:mdcs#
+削除<INPUT TYPE="checkbox" NAME="wm#CHK:mcnt#_del" VALUE="1">／
+#CHK:mdce#
+登録者<INPUT TYPE="text" NAME="wm#CHK:mcnt#_uid" SIZE="10" VALUE="#CHK:muid#">／
+更新日時
+<INPUT TYPE="radio" NAME="wm#CHK:mcnt#_date" VALUE="0">最新に
+<INPUT TYPE="radio" NAME="wm#CHK:mcnt#_date" VALUE="#CHK:mtime#" CHECKED>そのまま(#CHK:mdate#) 
+<BR>
+意味：<TEXTAREA NAME="wm#CHK:mcnt#_mean" COLS="60" ROWS="3" WRAP="NO">#CHK:mean#</TEXTAREA>
+<HR NOSHADE SIZE="1">
+</TEMPLATE_PARTS>
+
+<TEMPLATE_PARTS NAME="wfiles">
+<FONT COLOR="#FF0000"><B>[#CHK:fcnt#:#CHK:fstatus#]</B></FONT>
+<INPUT TYPE="hidden" NAME="wf#CHK:fcnt#_fid" VALUE="#CHK:fid#">
+<INPUT TYPE="hidden" NAME="wf#CHK:fcnt#_foname" VALUE="#CHK:fname#">
+<INPUT TYPE="hidden" NAME="wf#CHK:fcnt#_fosize" VALUE="#CHK:fsize#">
+#CHK:fdcs#
+削除<INPUT TYPE="checkbox" NAME="wf#CHK:fcnt#_del" VALUE="1">／
+#CHK:fdce#
+登録者<INPUT TYPE="text" NAME="wf#CHK:fcnt#_uid" SIZE="10" VALUE="#CHK:fuid#">／
+更新日時
+<INPUT TYPE="radio" NAME="wf#CHK:fcnt#_date" VALUE="0">最新に
+<INPUT TYPE="radio" NAME="wf#CHK:fcnt#_date" VALUE="#CHK:mtime#" CHECKED>そのまま(#CHK:mdate#) 
+<BR>
+ファイル：<INPUT TYPE="file" NAME="wf#CHK:fcnt#_file" SIZE="30">
+#CHK:ofile#<BR>
+タイトル（必須）：<INPUT TYPE="text" NAME="wf#CHK:fcnt#_title" SIZE="30" VALUE="#CHK:ftitle#"><BR>
+<HR NOSHADE SIZE="1">
+</TEMPLATE_PARTS>
+
+</FORM>
+</TEMPLATE>
+
+
+
+<!-- ******************** 分類登録、修正、削除 ******************** -->
+<!--
+<TEMPLATE TYPE="genre">-->
+<TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="5"><TR><TH BGCOLOR="#FF0000" ALIGN="center"><FONT SIZE="2" COLOR="#FFFFFF">◆ 分類登録、修正、削除 ◆</FONT></TH></TR></TABLE><BR>
+<FORM name="w" method="post" enctype="application/x-www-urlencoded" action="tdpadm.cgi">
+<INPUT TYPE="hidden" NAME="pwd" VALUE="#CHK:pwd#">
+<INPUT TYPE="hidden" NAME="gid" VALUE="#CHK:gid#">
+<INPUT TYPE="hidden" NAME="gmode" VALUE="#CHK:gmode#">
+<INPUT TYPE="hidden" NAME="mode" VALUE="genre">
+
+<DIV ALIGN="center">
+<TABLE BGCOLOR="#FFFFFF" BORDER="1" CELLPADDING="3" CELLSPACING="0">
+<TR><TH BGCOLOR="#AA0000" NOWRAP><FONT SIZE="2" COLOR="#FFFFFF">
+分類 <SELECT NAME="gnid" SIZE="1">#CHK:gpda#</SELECT> を
+<INPUT TYPE="submit" NAME="gread" VALUE="読み込み">
+<INPUT TYPE="submit" NAME="gnew" VALUE="新規登録">
+　<INPUT TYPE="submit" NAME="back" VALUE="↑ 戻る">
+</FONT></TH></TR>
+</TABLE>
+</DIV>
+<P>
+
+<DIV ALIGN="center">
+<TABLE WIDTH="95%" BGCOLOR="#FFFFFF" BORDER="1" CELLPADDING="3" CELLSPACING="0">
+<TR><TH BGCOLOR="#FF0000" NOWRAP COLSPAN="2"><FONT SIZE="3" COLOR="#FFFFFF">■ #CHK:ghead# ■</FONT></TH></TR>
+<TR><TH BGCOLOR="#FF6600" NOWRAP><FONT SIZE="2">分類名</FONT></TH>
+<TD NOWRAP><FONT SIZE="2"><INPUT TYPE="text" NAME="gname" SIZE="20" VALUE="#CHK:gname#"></FONT></TD></TR>
+<TR><TH BGCOLOR="#FF6600" NOWRAP><FONT SIZE="2">親分類</FONT></TH>
+<TD NOWRAP><FONT SIZE="2">
+<SELECT NAME="gpid" SIZE="1">
+<OPTION VALUE="0">（なし）</OPTION>
+#CHK:gpdp#
+</SELECT>
+</FONT></TD></TR>
+<TR><TH BGCOLOR="#FF6600" NOWRAP><FONT SIZE="2">順番</FONT></TH>
+<TD NOWRAP><FONT SIZE="2">同じ親を持つ子の中で上から<INPUT TYPE="text" NAME="gsno" SIZE="3" VALUE="#CHK:gsno#">番目</FONT></TD></TR>
+<TR><TH BGCOLOR="#FF6600" NOWRAP><FONT SIZE="2">コメント</FONT></TH>
+<TD NOWRAP><FONT SIZE="2"><INPUT TYPE="text" NAME="gcom" SIZE="40" VALUE="#CHK:gcom#"></FONT></TD></TR>
+<TR><TD BGCOLOR="#FF6600" NOWRAP ALIGN="center" COLSPAN="2"><FONT SIZE="2">
+<INPUT TYPE="checkbox" NAME="gdel" VALUE="1">この分類を削除　　　
+<INPUT TYPE="submit" NAME="genreexec" VALUE="作業実行">
+<INPUT TYPE="reset" VALUE="書き直し">
+</FONT></TD></TR>
+</TABLE>
+</DIV>
+</FORM>
+<P>
+
+
+<DIV ALIGN="center">
+■ 現在の分類階層 ■<BR>
+※ <FONT COLOR="#FF0000"><B>赤字</B></FONT>は現在修正中。<FONT COLOR="#0000FF"><B>青字</B></FONT>は親にできないものを表す。
+<TABLE BORDER="0" WIDTH="60%">
+<TR><TD BGCOLOR="#FFFFFF" NOWRAP><FONT SIZE="2">
+#CHK:glist#
+</FONT></TD></TR></TABLE>
+</DIV>
+</TEMPLATE>
+
+
+
+
+<!-- ******************** ユーザ登録、修正、削除 ******************** -->
+<!--
+<TEMPLATE TYPE="user">-->
+<TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="5"><TR><TH BGCOLOR="#FF0000" ALIGN="center"><FONT SIZE="2" COLOR="#FFFFFF">◆ ユーザ登録、修正、削除 ◆</FONT></TH></TR></TABLE><BR>
+<FORM name="form" method="post" enctype="application/x-www-urlencoded" action="tdpadm.cgi">
+<INPUT TYPE="hidden" NAME="pwd" VALUE="#CHK:pwd#">
+<INPUT TYPE="hidden" NAME="umode" VALUE="#CHK:umode#">
+<INPUT TYPE="hidden" NAME="mode" VALUE="user">
+
+<DIV ALIGN="center">
+<TABLE BGCOLOR="#FFFFFF" BORDER="1" CELLPADDING="3" CELLSPACING="0">
+<TR><TH BGCOLOR="#AA0000" NOWRAP><FONT SIZE="2" COLOR="#FFFFFF">
+ユーザ
+<SELECT NAME="unid" SIZE="1">
+#CHK:updp#
+</SELECT>
+
+を
+<INPUT TYPE="submit" NAME="uread" VALUE="読み込み">
+<INPUT TYPE="submit" NAME="unew" VALUE="新規登録">
+　<INPUT TYPE="submit" NAME="back" VALUE="↑ 戻る">
+</FONT></TH></TR>
+</TABLE>
+</DIV>
+<P>
+
+<DIV ALIGN="center">
+<TABLE WIDTH="95%" BGCOLOR="#FFFFFF" BORDER="1" CELLPADDING="3" CELLSPACING="0">
+<TR><TH BGCOLOR="#FF6600" NOWRAP COLSPAN="2"><FONT SIZE="3">■ #CHK:uhead# ■</FONT></TH></TR>
+<TR><TD BGCOLOR="#FFFFFF" NOWRAP COLSPAN="2"><FONT SIZE="2">※ ★の項目は必須です。</FONT></TD></TR>
+<TR><TH BGCOLOR="#FF6600" NOWRAP><FONT SIZE="2">ID★</FONT>
+</TH>
+<TD NOWRAP><FONT SIZE="2">#CHK:userid#
+<FONT COLOR="#FF0000">※ 使える文字は A-Z, a-z, 0-9, ハイフン(-)。</FONT>
+</FONT></TD></TR>
+<TR><TH BGCOLOR="#FF6600" NOWRAP><FONT SIZE="2">修正キー※</FONT></TH>
+<TD NOWRAP><FONT SIZE="2"><INPUT TYPE="text" NAME="upwd" SIZE="15" VALUE="#CHK:upwd#">
+<FONT COLOR="#FF0000">※ 新規時は必須、修正時は変更する場合のみ記入。</FONT>
+</FONT></TD></TR>
+<TR><TH BGCOLOR="#FF6600" NOWRAP><FONT SIZE="2">名前★</FONT></TH>
+<TD NOWRAP><FONT SIZE="2"><INPUT TYPE="text" NAME="uname" SIZE="20" VALUE="#CHK:uname#"></FONT></TD></TR>
+<TR><TH BGCOLOR="#FF6600" NOWRAP><FONT SIZE="2">メールアドレス</FONT></TH>
+<TD NOWRAP><FONT SIZE="2"><INPUT TYPE="text" NAME="uemail" SIZE="30" VALUE="#CHK:uemail#"></FONT></TD></TR>
+<TR><TH BGCOLOR="#FF6600" NOWRAP><FONT SIZE="2">ページURL</FONT></TH>
+<TD NOWRAP><FONT SIZE="2"><INPUT TYPE="text" NAME="uurl" SIZE="40" VALUE="#CHK:uurl#"></FONT></TD></TR>
+<TR><TH BGCOLOR="#FF6600" NOWRAP><FONT SIZE="2">コメント</FONT></TH>
+<TD NOWRAP><FONT SIZE="2"><INPUT TYPE="text" NAME="ucom" SIZE="60" VALUE="#CHK:ucom#"></FONT></TD></TR>
+<TR><TD BGCOLOR="#FF6600" NOWRAP ALIGN="center" COLSPAN="2"><FONT SIZE="2">
+<INPUT TYPE="checkbox" NAME="udel" VALUE="1">このユーザを削除　　　
+<INPUT TYPE="submit" NAME="userexec" VALUE="作業実行">
+<INPUT TYPE="reset" VALUE="書き直し">
+</FONT></TD></TR>
+</TABLE>
+</DIV>
+
+<TEMPLATE_PARTS NAME="nuid">
+<INPUT TYPE="text" NAME="uid" SIZE="15" VALUE="">
+</TEMPLATE_PARTS>
+
+<TEMPLATE_PARTS NAME="ouid">
+<INPUT TYPE="hidden" NAME="uid" VALUE="#CHK:uid#">#CHK:uid# ※変更不可
+</TEMPLATE_PARTS>
+
+</FORM>
+</TEMPLATE>
+
+
+
+
+
+<!-- ******************** 登録依頼の処理 ******************** -->
+<!--
+<TEMPLATE TYPE="check">-->
+<TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="5"><TR><TH BGCOLOR="#FF0000" ALIGN="center"><FONT SIZE="2" COLOR="#FFFFFF">◆ 登録待ち一覧（全#CHK:regno#件） ◆</FONT></TH></TR></TABLE><BR>
+<FORM name="FORM" method="post" enctype="application/x-www-urlencoded" action="tdpadm.cgi">
+<INPUT TYPE="hidden" NAME="pwd" VALUE="#CHK:pwd#">
+<INPUT TYPE="hidden" NAME="mode" VALUE="check">
+<DIV ALIGN="center">
+　下記のページそれぞれについて登録 or 却下を選び、ボタンを押してください。→
+<INPUT TYPE="submit" NAME="checkexec" VALUE="チェックＯＫ">
+　<INPUT TYPE="submit" NAME="back" VALUE="↑ 戻る"><BR>
+※ 一度却下したものは二度と復活しません。どちらも選ばなかった場合は保留になります。
+</DIV>
+
+<HR NOSHADE SIZE="2">
+
+#CHK:field#
+
+<HR NOSHADE SIZE="2">
+</FORM>
+</TEMPLATE>
+
+
+
+
+
+<!-- ******************** 登録依頼の処理 ******************** -->
+<!--
+<TEMPLATE TYPE="status">-->
+<TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="5"><TR><TH BGCOLOR="#FF0000" ALIGN="center"><FONT SIZE="2" COLOR="#FFFFFF">◆ 整合性情報 ◆</FONT></TH></TR></TABLE><BR>
+<FORM name="FORM" method="post" enctype="application/x-www-urlencoded" action="tdpadm.cgi">
+<INPUT TYPE="hidden" NAME="pwd" VALUE="#CHK:pwd#">
+<INPUT TYPE="hidden" NAME="mode" VALUE="status">
+<DIV ALIGN="center">
+<FONT SIZE="2" COLOR="#FF0000"><B>※注意※ 仮登録依頼が残っている場合、整合性回復はできません ※注意※</B></FONT>
+<P>
+　回復を実行する場合はこのボタンを押してください。→
+<INPUT TYPE="submit" NAME="statusexec" VALUE="回復実行">
+　<INPUT TYPE="submit" NAME="back" VALUE="↑ 戻る"><BR>
+</DIV>
+
+<HR NOSHADE SIZE="2">
+
+<B>■ 存在しない画像ファイル（#CHK:err_img_nofile_count#個）</B><BR>
+<FONT COLOR="#FF0000">回復方法：画像エントリの削除</FONT><BR>
+<SELECT SIZE="6" WIDTH="250">
+#CHK:err_img_nofile#
+</SELECT>
+<P>
+
+<B>■ 存在しない添付ファイル（#CHK:err_file_nofile_count#個）</B><BR>
+<FONT COLOR="#FF0000">回復方法：添付ファイルエントリの削除</FONT><BR>
+<SELECT SIZE="6" WIDTH="250">
+#CHK:err_file_nofile#
+</SELECT>
+<P>
+
+<B>■ 必要ない画像ファイル（#CHK:err_img_noentry_count#個）</B><BR>
+<FONT COLOR="#FF0000">回復方法：画像ファイルの削除</FONT><BR>
+<SELECT SIZE="6" WIDTH="250">
+#CHK:err_img_noentry#
+</SELECT>
+<P>
+
+<B>■ 必要ない添付ファイル（#CHK:err_file_noentry_count#個）</B><BR>
+<FONT COLOR="#FF0000">回復方法：添付ファイルの削除</FONT><BR>
+<SELECT SIZE="6" WIDTH="250">
+#CHK:err_file_noentry#
+</SELECT>
+<P>
+
+<B>■ 空の添付ディレクトリ（#CHK:err_dir_empty_count#個）</B><BR>
+<FONT COLOR="#FF0000">回復方法：ディレクトリの削除</FONT><BR>
+<SELECT SIZE="5" WIDTH="250">
+#CHK:err_dir_empty#
+</SELECT>
+<P>
+
+<HR NOSHADE SIZE="2">
+</FORM>
+</TEMPLATE>
+
+
+
+
+<!-- ******************** コメント削除 ******************** -->
+<!--
+<TEMPLATE TYPE="com">-->
+<TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="5"><TR><TH BGCOLOR="#FF0000" ALIGN="center"><FONT SIZE="2" COLOR="#FFFFFF">◆ コメント削除 ◆</FONT></TH></TR></TABLE><BR>
+<FORM name="w" method="post" enctype="application/x-www-urlencoded" action="tdpadm.cgi">
+<INPUT TYPE="hidden" NAME="pwd" VALUE="#CHK:pwd#">
+<INPUT TYPE="hidden" NAME="wid" VALUE="#CHK:wid#">
+<INPUT TYPE="hidden" NAME="cmode" VALUE="#CHK:cmode#">
+<INPUT TYPE="hidden" NAME="mode" VALUE="com">
+
+<DIV ALIGN="center">
+<TABLE BGCOLOR="#FFFFFF" BORDER="1" CELLPADDING="3" CELLSPACING="0">
+<TR><TH BGCOLOR="#AA0000" NOWRAP><FONT SIZE="2" COLOR="#FFFFFF">
+単語<INPUT TYPE="text" NAME="wnid" SIZE="20" VALUE="#CHK:wnid#">へのコメントを
+<INPUT TYPE="submit" NAME="cread" VALUE="表示">
+</FONT></TH></TR>
+</TABLE>
+<FONT COLOR="#FF0000">※ 単語を空にして「表示」を押すと単語に関係なく新規登録順に表示されます ※</FONT>
+</DIV>
+<P>
+
+<DIV ALIGN="center">
+　削除するコメントを選び、ボタンを押してください。→
+<INPUT TYPE="submit" NAME="comexec" VALUE="チェックしたコメントを削除">
+　<INPUT TYPE="submit" NAME="back" VALUE="↑ 戻る"><BR>
+</DIV>
+
+<HR NOSHADE SIZE="2">
+
+<H3>■ #CHK:wordtitle#コメント</H3>
+#CHK:field#
+
+<HR NOSHADE SIZE="2">
+</FORM>
+</TEMPLATE>
+
+<BR><BR><BR><BR><BR>
+#CHK:copyright#
+
+</FONT>
+</BODY>
+</HTML>
+

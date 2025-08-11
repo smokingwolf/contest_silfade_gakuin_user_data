@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML LANG="ja">
+<HEAD>
+<META http-equiv="Content-Style-Type" content="text/css">
+<meta charset="UTF-8">
+<META NAME="description" CONTENT="シルフェイド学院物語のユーザデータ優秀作を決める大賞です">
+<TITLE>シルフェイド学院物語 ユーザデータ大賞</TITLE>
+<LINK REL="stylesheet" HREF="main.css" TYPE="text/css">
+<SCRIPT src="smoothscroll.js" type="text/javascript"></SCRIPT> 
+</HEAD>
+
+<BODY>
+	<DIV ID="head"><a id=top></a>
+	<H1><A href="./" class=white><font size=3>シルフェイド学院物語</font><BR><img src=space.gif width=1 height=34 border=0>ユーザデータ大賞 アーカイブ</A></H1>
+<UL class="menu">
+<LI class=menu1><A href="../../" class=white>←ホームへ</A></LI>
+<LI class=menu3><font class=selected>この大賞について</font></LI>
+<LI class=menu1><A href="result1.shtml" class=white><small>結果1[新ｸﾗｽ/基本ﾃﾞｰﾀ]</small></A></LI>
+<LI class=menu2><A href="result2.shtml" class=white><small>結果2[ｼｮｰﾄｽﾄｰﾘｰ/他]</small></A></LI>
+</UL>
+	</DIV>
+<DIV ID="middle">
+
+<a href=#first class=g>シル学ユーザデータ大賞について</a> / <a href=#sce class=g>開催スケジュール</a> （ページ内リンク）<BR>
+　<B><FONT color="#ff4444"><BR>
+</FONT></B>
+<H2 class=index><a id=first></a>シルフェイド学院物語　ユーザデータ大賞について</H2>
+ユーザデータ大賞のページへようこそ！ <BR>
+このページは、シルフェイド学院物語用に作られた「ユーザデータ」の周知、および、<BR>
+優秀なユーザデータ作品をより多くの方々に知っていただく目的で設立されたサイトです。<BR>
+大賞は、ユーザデータをプレイしてくださった皆さまの投票で決定されます。<BR>
+<BR>
+<B><FONT size="+2" color="#ff4444">2012/12/25　ついに結果発表です！</FONT></B><BR>
+<BR>
+物語内の住人達には決して作ることができない、想いの詰まったユーザデータ。
+<BR>
+シルフェイド学院物語の原作者以上に愛をそそいでくださった<BR>
+すばらしい作品の数々、ぜひ遊んでみて下さい。<BR>
+<BR>
+<HR>
+ユーザデータ数が多かったため、掲載ページを２ページに分割しています。<BR>
+それぞれのページから結果を閲覧できます。投票して下さった皆さま、本当にありがとうございました！<BR>
+<BR>
+　【<B><A href="result1.shtml">結果ページ１</A></B>】　＞　「新クラス」と、「基本クラス＋体験版用データ」を見られます。
+<BR>
+　【<B><A href="result2.shtml">結果ページ２</A></B>】　＞　「ショートストーリー」と、「その他」データを見られます。 <BR>
+<BR>
+評価基準は以下の通りです。<BR>
+<BR>
+　◇<B>内容の印象</B>　：　ユーザデータがイベント寄りか、バトル寄りか。<BR>
+　◇<B>面白さ</B>　：　ユーザデータを入れてどれだけ面白くなったか。<BR>
+　◇<B>とりあえず入れておけ度</B>　：　とりあえず入れて安心できるものか。<BR>
+　◇<B>原作との親和性</B>　：　強い（原作になじむ）か弱い（原作にない新鮮さ）か。<BR>
+　◇<B>完成度</B>　：　そもそも完成しているか、バグや他データへの干渉は少ないか。<BR>
+　◇<B>あなたの思う総合評価</B>　：　思うまま、自由に得点を付けてください。順位は、この評価の得点で決定されます。<BR>
+
+<BR>
+<A href=#top class=g>↑へ戻る</A>
+<BR>
+　
+<H2 class=index><a id=sce></a>開催スケジュール</H2>
+ユーザデータ大賞のスケジュールは以下の通りで行われました。<BR>
+<BR>
+
+<TABLE cellspacing="0">
+
+    <TR bgcolor="#ddddff">
+      <TD>2012/11/11(日)<BR>
+　|　<BR>
+      2012/12/24(月)頃</TD>
+      <TD><STRONG>投票期間</STRONG><BR>
+      この期間中も、ユーザデータの修正は自由です。<BR>
+      投票できるのは11/10以前に投稿されたユーザデータに<BR>
+      限りますので、ご了承ください。</TD>
+    </TR>
+    <TR bgcolor="#ffaaaa">
+      <TD>2012/12/25(火)</TD>
+<TD><STRONG>結果発表</STRONG><BR>
+      各部門ごとに上位作品の順位が発表されます。</TD>
+</TR>
+  
+</TABLE>
+<BR>
+<A href=#top class=g>↑へ戻る</A>
+<BR>
+<BR>
+
+
+<DIV ID="foot">
+<table class=noborder><tr><td class=noborder></td><td class=noborder></td>
+<td class=noborder></td></tr></table><BR>
+</DIV>
+
+
+
+
+</BODY>
+</HTML>

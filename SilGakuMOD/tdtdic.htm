@@ -1,0 +1,175 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<META http-equiv="Content-Style-Type" content="text/css">
+<STYLE TYPE="text/css">
+<!--
+/* 背景色、文字色 */
+BODY{background-color : #fdfdff;
+font-family : "ＭＳ Ｐゴシック" ;
+  font-size : 10pt;
+  color : #434395;
+  margin: 10px 10px 10px 10px;
+
+}
+
+.menuX{
+	background-image : url(http://www.silversecond.net/contents/game/silfade_gakuin/image/background_menu.jpg);
+	background-repeat: repeat-x;
+	background-color : #ffffff;
+}
+
+A:LINK,A:VISITED{color:#b6385c;text-decoration : underline;}
+A:HOVER,A:ACTIVE{color : #f6688c;text-decoration : underline;}
+
+A.red:LINK,A.red:VISITED{color:#c6385c;}
+A.red:HOVER,A.red:ACTIVE{color : #f6688c;text-decoration : underline;}
+
+A.blue:LINK,A.blue:VISITED{color:#5658a6;}
+A.blue:HOVER,A.blue:ACTIVE{color : #9698e6;text-decoration : underline;}
+
+A.siro:LINK,A.siro:VISITED{color:#ffffff;}
+A.siro:HOVER,A.siro:ACTIVE{color : #bbbbcf;text-decoration : underline;}
+
+
+A.bl2:LINK,A.bl2:VISITED{color:#ccccff;}
+A.bl2:HOVER,A.bl2:ACTIVE{color : #ddddff;text-decoration : underline;}
+
+
+A.glink:LINK,A.glink:VISITED{color:#ccccdf;}
+A.glink:HOVER,A.glink:ACTIVE{color : #dfdfff;text-decoration : underline;}
+
+A{text-decoration : none;}
+
+
+/*--ﾃｰﾌﾞﾙ--*/
+TABLE{
+  font-size : 10pt;
+	line-height: 120%;
+}
+TABLE.close{
+  font-size : 10pt;
+	line-height: 110%;
+}
+
+SMALL.mini{
+	line-height: 100%;
+}
+
+.black{background-color:#000000;}
+.gray{background:#434395;}
+.white{background:#fdfdff;}
+.mwhite{background:#fefeff;}
+.veryusui{background:#f0f0fa;}
+.mgray{background:#6363b5;}
+.mmgray{background:#8383d5;}
+.mbgray{background:#7373f5;}
+.fullwhite{background:#ffffff;}
+
+
+/*---FONT---*/
+.fb{color:#000000;}
+.fw{color:#ffffff;}
+.fmw{color:#d2d2dd;}
+.fg{color:#434385;}
+.fmg{color:#8383a5;}
+.flink{color:#737385;}
+.fmmg{color:#a3a3e5;}
+.fmbg{color:#7373a5;}
+.fred{color:#c6383c;}
+.flred{color:#f6a8ac;}
+.f_toplink{color:#fdfdff;font-size : 1pt;}
+
+.ten{font-size:10pt;}
+.elev{font-size:12pt;}
+.plus{font-size:14pt;}
+
+/*--線色--*/
+.line{color:#8383a5;}
+.dline{color:#60609b;}-->
+</STYLE>
+<TITLE></TITLE>
+</HEAD>
+<BODY CLASS="wbg">
+
+
+<!-- ********** 変更不可 ********** -->
+#CHK:body#
+
+
+
+<!-- ********** 全体 ********** -->
+
+<TEMPLATE_PARTS NAME="word">
+<A NAME="#CHK:wid#"></A>　
+<TABLE width="560" border="0" cellpadding="1" cellspacing="1"><TR><TD class="mmgray">
+
+<TABLE class="menuX" width="560" cellpadding="3" cellspacing="1"><TBODY>
+    <TR>
+      <TD class="fg"><SPAN CLASS="wwd"><B class=plus>#CHK:word#</B></SPAN> <SPAN CLASS="wgr"><font class=fmmg>#CHK:genres#</font> </SPAN><SPAN CLASS="whn">#CHK:hno#</SPAN><SPAN CLASS="wrb"> <BR><font color=#7777cc size=-2>#CHK:ruby#</font></SPAN></TD>
+      <TD class="fg" align="right"><SPAN CLASS="wgu"><font class=fmmg><B>【更新時刻】</B> #CHK:stime#</font></SPAN></TD>
+    </TR>
+    <TR>
+      <TD class="white" colspan="2">
+<font color=#7777aa>
+<DIV CLASS="wwk">
+#CHK:image#
+
+<SPAN CLASS="wrb"></SPAN><!--<SPAN CLASS="wul"><B>【URL】</B> #CHK:link#</SPAN><BR>-->
+<SPAN CLASS="wfl"><B>【ファイル】</B><BR> #CHK:files#</SPAN><BR>
+<SPAN CLASS="wmn"><B>【説明】</B>
+<!--<A HREF="#CHK:cgiurl#/tdpusr.cgi?wid=#CHK:wid#">(→説明文追加)</A>--><BR>
+#CHK:means#</SPAN></DIV>
+      <BR>
+<SPAN CLASS="wtk"><B>【一言】</B>
+<A href="#CHK:cgiurl#/tdpcom.cgi?cwid=#CHK:wid#">(→コメントを書き込む)</A><BR>
+#CHK:coms#</SPAN>
+</font>
+</TD>
+    </TR>
+  </TBODY></TABLE>
+ </TD></TR></TABLE>
+</TEMPLATE_PARTS>
+
+<!-- ********** 画像 ********** -->
+<TEMPLATE_PARTS NAME="image">
+<A HREF="#CHK:imgurl#" TARGET="_blank"><IMG SRC="#CHK:imgurl#" WIDTH="#CHK:imgx#" HEIGHT="#CHK:imgy#" BORDER="0" ALIGN="right"></A>
+</TEMPLATE_PARTS>
+
+<!-- ********** 分類 ********** -->
+<TEMPLATE_PARTS NAME="genres">
+[#CHK:gname#]
+</TEMPLATE_PARTS>
+
+<!-- ********** 参照URL ********** -->
+<TEMPLATE_PARTS NAME="link">
+<A CLASS="wul" HREF="#CHK:url#" target=_blank>#CHK:url#</A>
+</TEMPLATE_PARTS>
+
+<!-- ********** 関連語 ********** -->
+<TEMPLATE_PARTS NAME="relations">
+<A CLASS="wrl" HREF="#CHK:relurl#">#CHK:relword#</A>、
+</TEMPLATE_PARTS>
+
+<!-- ********** 意味 ********** -->
+<TEMPLATE_PARTS NAME="means">
+【#CHK:mcnt#】 <B>#CHK:muname# (#CHK:muid#)</B><BR>#CHK:mean# <BR>
+</TEMPLATE_PARTS>
+
+<!-- ********** ファイル ********** -->
+<TEMPLATE_PARTS NAME="files">
+&nbsp;
+[#CHK:fcnt#] <A HREF="#CHK:fburl#/#CHK:fname#" TARGET="_blank">#CHK:ftitle# [ <B>#CHK:fname#</B>: #CHK:fsize#KB ]<!-- [#CHK:funame#]--></A><BR>
+</TEMPLATE_PARTS>
+
+<!-- ********** 一言 ********** -->
+<TEMPLATE_PARTS NAME="coms">
+<font color=#9999aa>　[#CHK:ctime#]</font> <B>#CHK:cname#</B>　#CHK:ccom#<BR>
+</TEMPLATE_PARTS>
+
+
+<BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR><BR>
+</BODY>
+</HTML>
+

@@ -1,0 +1,555 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>T-Dictionary - User</TITLE>
+
+<STYLE TYPE="text/css">
+<!--
+BODY{
+        background-color:#dfdfff;
+        color:#434356;
+        font-size:11px;
+}
+.attention{
+        color:#FF0000;
+        font-size:11px;
+}
+.normal{
+        color:#000000;
+        font-size:11px;
+}
+.emp{
+        color:#FF0000;
+        font-weight:bold;
+}
+.cool{
+        color:#006600;
+        font-weight:bold;
+}
+.weak{
+        color:#666666;
+        font-size:11px;
+}
+.big{
+        color:#0000FF;
+        font-size:12px;
+        font-style:bold;
+}
+.t{
+        background-color:#FF6600;
+        font-size:13px;
+        font-weight:bold;
+}
+.h{
+        background-color:#434356; 
+       color:#dfdfff;
+        font-size:11px;
+}
+.a{
+        background-color:#DDDDDD;
+        font-size:11px;
+}
+.d{
+        background-color:#FFFFFF;
+        font-size:11px;
+}
+-->
+</STYLE>
+
+</HEAD>
+
+<BODY LINK="#3300FF" VLINK="#3300FF">
+
+[<A HREF="#CHK:htmlurl#/index.html" TARGET="_top">トップ</A>]
+[<A href="tdpusr.cgi">ユーザ用</A>]
+<TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="5"><TR><TH CLASS="h" ALIGN="center"><FONT SIZE="3" COLOR="#FFFFFF">■ 登録ユーザ用ページ ■</FONT></TH></TR></TABLE>
+<BR>
+
+<HR SIZE="0">
+<B>作業状況：</B>#CHK:msg#
+<HR SIZE="0">
+
+
+
+<!-- ********** トップ ********** -->
+<!--
+<TEMPLATE TYPE="top">-->
+<FORM method="post" action="tdpusr.cgi" enctype="application/x-www-urlencoded">
+
+<DIV ALIGN="center">
+<TABLE WIDTH="80%" BORDER="1" CELLPADDING="3" CELLSPACING="0">
+<TR>
+  <TH CLASS="h" COLSPAN="2">■ 作業選択 ■</TH>
+</TR>
+<TR>
+  <TD CLASS="d" COLSPAN="2">
+    <OL>
+    ■ 手順 ■
+    <LI>[1]にIDと修正キーを入れる。
+    <SPAN CLASS="attention">※ユーザ登録がまだの方は<A href="tdpusr.cgi?mode=new">こちら</A>へ。自由に登録可</SPAN>
+    <LI>[2]から行いたい作業を選択する
+    <LI>[3]に作業対象作品名を「ふりがな」で入力する<SPAN CLASS="attention">（[2]が(1)(5)の場合は必要なし）</SPAN>
+        <LI>「作業実行」を押す
+      </OL>
+      </TD>
+</TR>
+<TR>
+  <TH CLASS="h">[1]</TH>
+  <TD CLASS="d">
+  ID：<INPUT TYPE="text" NAME="id" SIZE="15" VALUE="#CHK:id#">　
+  パスワード：<INPUT TYPE="password" NAME="pwd" SIZE="15" VALUE="#CHK:pwd#">　
+  </TH>
+</TR>
+<TR>
+  <TH CLASS="h">[2]</TH>
+  <TD CLASS="d">
+    (1)<INPUT TYPE="radio" NAME="mode" VALUE="wordnew"><SPAN CLASS="cool">ユーザデータ</SPAN>を新規登録する（[3]対象ユーザデータ名　不要）<BR>
+    (2)<INPUT TYPE="radio" NAME="mode" VALUE="wordfix"><SPAN CLASS="cool">ユーザデータ</SPAN> <SPAN CLASS="emp">(A)</SPAN> を修正する <BR>
+      　　→対象ユーザデータ名（ふりがなで入力）<SPAN CLASS="emp">(A)</SPAN>:<INPUT TYPE="text" NAME="v_a" SIZE="30" VALUE="#CHK:ruby#">
+<BR>
+<!--    (3)<INPUT TYPE="radio" NAME="mode" VALUE="mean">ユーザデータ <SPAN CLASS="emp">(A)</SPAN> の<SPAN CLASS="cool">説明文</SPAN>を追加、修正、削除する<BR>
+      #CHK:fdcs# (4)<INPUT TYPE="radio" NAME="mode" VALUE="file">ユーザデータ <SPAN CLASS="emp">(A)</SPAN> の<SPAN CLASS="cool">ファイル</SPAN>を追加、修正、削除する<BR>
+-->#CHK:fdce# (3)<INPUT TYPE="radio" NAME="mode" VALUE="user"><SPAN CLASS="cool">ユーザ情報</SPAN>を修正する（[3]対象ユーザデータ名　不要）<BR>
+  </TD>
+</TR>
+<!--
+<TR>
+  <TH CLASS="h">[3]</TH>
+  <TD CLASS="d">対象ユーザデータ名（ふりがなで入力）<SPAN CLASS="emp">(A)</SPAN>:<INPUT TYPE="text" NAME="v_a" SIZE="30" VALUE="#CHK:ruby#">
+ 
+  </TD>
+</TR>
+-->
+<TR>
+  <Th CLASS="h">&nbsp;</TH>
+  <TH CLASS="h">
+  <INPUT TYPE="submit" VALUE="作業実行">
+  </TH>
+</TR>
+</TABLE>
+</DIV>
+</FORM>
+</TEMPLATE>
+
+
+
+
+
+<!-- ******************** ユーザ登録 ******************** -->
+<!--
+<TEMPLATE TYPE="new">-->
+<FORM name="form" method="post" action="tdpusr.cgi" enctype="application/x-www-urlencoded">
+<INPUT TYPE="hidden" NAME="mode" VALUE="new">
+
+<DIV ALIGN="center">
+<TABLE WIDTH="95%" BORDER="1" CELLPADDING="3" CELLSPACING="0">
+<TR>
+  <TH CLASS="h" COLSPAN="2">■ ユーザ登録 ■</TH>
+</TR>
+<TR>
+  <TH CLASS="h">希望のID</TH>
+  <TD CLASS="d">
+    <INPUT TYPE="text" NAME="uid" SIZE="15" VALUE=""><BR>
+    <SPAN CLASS="attention">※ ６文字以上。使える文字は A-Z, a-z, 0-9, ハイフン(-)。<BR>（例）tnishida, t-nishida, nishida359等。</SPAN>
+  </TD>
+</TR>
+<TR>
+  <TH CLASS="h">パスワード</TH>
+  <TD CLASS="d">
+    <INPUT TYPE="password" NAME="upwd" SIZE="15" VALUE="">
+    （もう一度）<INPUT TYPE="password" NAME="upwd2" SIZE="15" VALUE="">
+    <SPAN CLASS="attention">※ 必須</SPAN>
+  </TD>
+</TR>
+<TR>
+  <TH CLASS="h">表示される名前</TH>
+  <TD CLASS="d">
+    <INPUT TYPE="text" NAME="uname" SIZE="20" VALUE="">
+    <SPAN CLASS="attention">※ 必須</SPAN>
+  </TD>
+</TR>
+<TR>
+  <TH CLASS="h">EMail</TH>
+  <TD CLASS="d"><INPUT TYPE="text" NAME="uemail" SIZE="30" VALUE=""></TD>
+</TR>
+<TR>
+  <TH CLASS="h">URL</TH>
+  <TD CLASS="d"><INPUT TYPE="text" NAME="uurl" SIZE="40" VALUE=""></TD>
+</TR>
+<TR>
+  <TH CLASS="h">コメント</TH>
+  <TD CLASS="d"><INPUT TYPE="text" NAME="ucom" SIZE="60" VALUE=""></TD>
+</TR>
+<TR>
+  <TH CLASS="h" COLSPAN="2">
+    <INPUT TYPE="submit" NAME="newexec" VALUE="登録">
+    <INPUT TYPE="reset" VALUE="書き直し">
+  </TH>
+</TR>
+</TABLE>
+</DIV>
+</FORM>
+</TEMPLATE>
+
+
+
+
+
+<!-- ******************** ユーザ情報変更 ******************** -->
+<!--
+<TEMPLATE TYPE="user">-->
+
+<FORM name="form" method="post" action="tdpusr.cgi" enctype="application/x-www-urlencoded">
+<INPUT TYPE="hidden" NAME="mode" VALUE="user">
+<INPUT TYPE="hidden" NAME="id" VALUE="#CHK:id#">
+<INPUT TYPE="hidden" NAME="pwd" VALUE="#CHK:pwd#">
+<DIV ALIGN="center">
+<TABLE WIDTH="95%" BORDER="1" CELLPADDING="3" CELLSPACING="0">
+<TR>
+  <TH CLASS="h" COLSPAN="2">■ ユーザ情報修正 ■</TH>
+</TR>
+<TR>
+  <TH CLASS="h">ID</TH>
+  <TD CLASS="d">
+    #CHK:id#&nbsp;
+    <SPAN CLASS="attention">※ 変更不可</SPAN>
+  </TD>
+</TR>
+<TR>
+  <TH CLASS="h">新しいパスワード</TH>
+  <TD CLASS="d">
+    <INPUT TYPE="password" NAME="upwd" SIZE="15" VALUE="">
+    （もう一度）<INPUT TYPE="password" NAME="upwd2" SIZE="15" VALUE="">
+    <SPAN CLASS="attention">※ 変更する場合のみ記述</SPAN>
+  </TD>
+</TR>
+<TR>
+  <TH CLASS="h">表示される名前</TH>
+  <TD CLASS="d"><INPUT TYPE="text" NAME="uname" SIZE="20" VALUE="#CHK:uname#"></TD>
+</TR>
+<TR>
+  <TH CLASS="h">EMail</TH>
+  <TD CLASS="d"><INPUT TYPE="text" NAME="uemail" SIZE="30" VALUE="#CHK:uemail#"></TD>
+</TR>
+<TR>
+  <TH CLASS="h">URL</TH>
+  <TD CLASS="d"><INPUT TYPE="text" NAME="uurl" SIZE="40" VALUE="#CHK:uurl#"></TD>
+</TR>
+<TR>
+  <TH CLASS="h">コメント</TH>
+  <TD CLASS="d"><INPUT TYPE="text" NAME="ucom" SIZE="60" VALUE="#CHK:ucom#"></TD>
+</TR>
+<TR>
+  <TH CLASS="h" COLSPAN="2">
+    <INPUT TYPE="checkbox" NAME="udel" VALUE="1">このユーザを削除　　　
+    <INPUT TYPE="submit" NAME="userexec" VALUE="作業実行">
+    <INPUT TYPE="reset" VALUE="書き直し">
+  </TH>
+</TR>
+</TABLE>
+</DIV>
+</FORM>
+</TEMPLATE>
+
+
+
+
+
+<!-- ******************** 単語登録、修正、削除 ******************** -->
+<!--
+<TEMPLATE TYPE="word">-->
+<FORM name="w" method="post" enctype="multipart/form-data" action="tdpusr.cgi">
+<INPUT TYPE="hidden" NAME="mode" VALUE="word">
+<INPUT TYPE="hidden" NAME="wmode" VALUE="#CHK:wmode#">
+<INPUT TYPE="hidden" NAME="id" VALUE="#CHK:id#">
+<INPUT TYPE="hidden" NAME="pwd" VALUE="#CHK:pwd#">
+<INPUT TYPE="hidden" NAME="wid" VALUE="#CHK:wid#">
+
+<DIV ALIGN="center">
+<TABLE WIDTH="95%" BGCOLOR="#FFFFFF" BORDER="1" CELLPADDING="3" CELLSPACING="0">
+<TR>
+  <TH CLASS="h" COLSPAN="2">■ #CHK:whead# ■</TH>
+</TR>
+<TR>
+  <TD CLASS="a" COLSPAN="2">
+  ※ ★は必須項目<BR>
+  </TD>
+</TR>
+<TR>
+  <TH CLASS="h">登録者ID</TH>
+  <TD CLASS="d">#CHK:id# （※変更不可）</TD>
+</TR>
+<TR>
+  <TH CLASS="h">★ユーザデータ名</TH>
+  <TD CLASS="d"><INPUT TYPE="text" NAME="wword" SIZE="30" VALUE="#CHK:word#"></TD>
+</TR>
+<TR>
+  <TH CLASS="h">★ふりがな</TH>
+  <TD CLASS="d"><INPUT TYPE="text" NAME="wruby" SIZE="40" VALUE="#CHK:ruby#"></TD>
+</TR>
+<!--<TR>
+  <TH CLASS="h">データURL</TH>
+  <TD CLASS="d"><INPUT TYPE="text" NAME="wurl" SIZE="40" VALUE="#CHK:url#"></TD>
+</TR>
+-->
+<TR>
+  <TH CLASS="h">★ジャンル<BR>
+      （1つ以上選択）</TH>
+  <TD CLASS="d">
+    #CHK:wgenres#
+  </TD>
+</TR>
+<TR>
+  <TH CLASS="h">★説明文</TH>
+  <TD CLASS="d">
+    #CHK:wmeans#
+  </TD>
+</TR>
+<TR>
+  <TH CLASS="h">ファイル</TH>
+  <TD CLASS="d">
+    #CHK:wfiles#<BR>
+  </TD>
+</TR>
+<!--
+<TR>
+  <TH CLASS="h">関連する作品</TH>
+  <TD CLASS="d">
+    <SPAN CLASS="attention">
+    ※ <B>ふりがな</B>で入力。半角カンマ「<B>,</B>」で区切って複数記述可。<BR>
+    ※ 同音異義語は後ろに「(<B>識別番号</B>)」を付ける。（例） きじ<B>(1)</B>（←半角で）<BR>
+    </SPAN>
+    <INPUT TYPE="text" NAME="wrelrubys" SIZE="40" VALUE="#CHK:wrelruby#">
+  </TD>
+</TR>
+-->
+<TR>
+  <TH CLASS="h">スクリーンショット
+  </TH>
+  <TD CLASS="d">
+    #CHK:idcs#
+    現在：#CHK:imglink#
+    <INPUT TYPE="file" NAME="wimage" SIZE="20"><BR>
+    サイズ：ヨコ<INPUT TYPE="text" NAME="wimgx" SIZE="4" VALUE="#CHK:imgx#">×タテ<INPUT TYPE="text" NAME="wimgy" SIZE="4" VALUE="#CHK:imgy#"> （320x240推奨）<INPUT TYPE="checkbox" NAME="wimgdel" VALUE="1">削除
+    #CHK:idce#
+    #CHK:idhs#
+    <SPAN CLASS="attention">※ 画像登録はできません。</SPAN>
+    <INPUT TYPE="hidden" NAME="wimgx" SIZE="4" VALUE="#CHK:imgx#">
+    <INPUT TYPE="hidden" NAME="wimgy" SIZE="4" VALUE="#CHK:imgy#">
+    #CHK:idhe#
+  </TD>
+</TR>
+
+<!--<TR>
+  <TH CLASS="h">更新日</TH>
+  <TD CLASS="d">
+    <INPUT TYPE="radio" NAME="wdate" VALUE="#CHK:stime#" CHECKED>元のまま
+    (#CHK:wdate#) 
+    <INPUT TYPE="radio" NAME="wdate" VALUE="0">最新にする　
+  </TD>
+</TR>-->
+<TR>
+  <TH CLASS="h" ALIGN="center" COLSPAN="2">
+  <INPUT TYPE="hidden" NAME="wdate" VALUE="#CHK:stime#"><!--更新日はこっちに入れている-->
+  <INPUT TYPE="hidden" NAME="retime" VALUE="#CHK:newtime#"><!--更新日はこっちに入れている-->
+    #CHK:wdcs#
+    <INPUT TYPE="checkbox" NAME="wdel" VALUE="1">この作品を削除　　　 #CHK:wdce# <INPUT TYPE="submit" NAME="wordexec" VALUE="作業実行">
+    <INPUT TYPE="reset" VALUE="書き直し">
+  </TH>
+</TR>
+</TABLE>
+</DIV>
+</FORM>
+</TEMPLATE>
+
+
+
+
+
+<!-- ******************** 意味追加、修正、削除 ******************** -->
+<!--
+<TEMPLATE TYPE="mean">-->
+
+<FORM name="M" method="post" action="tdpusr.cgi" enctype="application/x-www-urlencoded">
+<INPUT TYPE="hidden" NAME="mode" VALUE="mean">
+<INPUT TYPE="hidden" NAME="id" VALUE="#CHK:id#">
+<INPUT TYPE="hidden" NAME="pwd" VALUE="#CHK:pwd#">
+<INPUT TYPE="hidden" NAME="wid" VALUE="#CHK:wid#">
+<INPUT TYPE="hidden" NAME="wword" VALUE="#CHK:word#">
+
+<DIV ALIGN="center">
+<TABLE WIDTH="95%" BORDER="1" CELLPADDING="3" CELLSPACING="0">
+<TR>
+  <TH CLASS="h" COLSPAN="2">■ #CHK:mhead# ■</TH>
+</TR>
+<TR>
+  <TH CLASS="h">ユーザデータ名</TH>
+  <TD CLASS="d">
+    #CHK:word# #CHK:hno# （#CHK:ruby#）
+  </TD>
+</TR>
+<TR>
+  <TH CLASS="h">説明文</TH>
+  <TD CLASS="d">
+    <SPAN CLASS="attention">※ あなたが登録したもの以外は修正、削除できません。</SPAN>
+    <HR NOSHADE SIZE="1">
+    #CHK:means#
+    <BR>
+    <SPAN CLASS="attention">※ 文章内の文字を他のユーザデータ名へリンクさせることができます：<BR>
+      &nbsp;&nbsp;＜書式＞ #LINK:[ユーザデータ名]:[リンク文字列]# （区切り文字は半角コロン
+      &quot;:&quot; です）<BR>
+      &nbsp;&nbsp;（例）「この作品は#LINK:基本システム:ベース#の後に…」 → 「この作品は<A HREF=".">ベース</A>の後に…」 </SPAN>
+  </TD>
+</TR>
+<TR>
+  <TH CLASS="h" COLSPAN="2">
+    <INPUT TYPE="submit" NAME="meanexec" VALUE="登録">
+    <INPUT TYPE="reset" VALUE="書き直し">
+  </TH>
+</TR>
+</TABLE>
+</DIV>
+</FORM>
+</TEMPLATE>
+
+
+
+
+
+<!-- ******************** パーツ：意味 ******************** -->
+<TEMPLATE_PARTS NAME="wmeans">
+<SPAN CLASS="emp">[#CHK:mcnt#:#CHK:mstatus#]</SPAN>
+<INPUT TYPE="hidden" NAME="wm#CHK:mcnt#_mid" VALUE="#CHK:mid#">
+<INPUT TYPE="hidden" NAME="wm#CHK:mcnt#_mscd" VALUE="#CHK:mscd#">
+#CHK:mdcs#
+<!--<INPUT TYPE="checkbox" NAME="wm#CHK:mcnt#_del" VALUE="1">削除-->
+#CHK:mdce#
+<BR>
+内容 <TEXTAREA NAME="wm#CHK:mcnt#_mean" COLS="60" ROWS="3" WRAP="NO" onChange="checkMeanUpdate(#CHK:mcnt#);">#CHK:mean#</TEXTAREA>
+<HR NOSHADE SIZE="1">
+</TEMPLATE_PARTS>
+
+
+<TEMPLATE_PARTS NAME="wmeans_text">
+<INPUT TYPE="hidden" NAME="wm#CHK:mcnt#_mid" VALUE="#CHK:mid#">
+<SPAN CLASS="cool">[#CHK:mcnt#:#CHK:mstatus#]</SPAN>
+<SPAN CLASS="weak">
+<B>登録者</B>：#CHK:muid#、
+<B>更新日時</B>：#CHK:mdate#
+<BR>
+<B>説明文</B>：#CHK:mean#
+</SPAN>
+<HR NOSHADE SIZE="1">
+</TEMPLATE_PARTS>
+
+
+
+
+
+<!-- ******************** ファイル追加、修正、削除 ******************** -->
+<!--
+<TEMPLATE TYPE="file">-->
+<FORM name="F" method="post" enctype="multipart/form-data" action="tdpusr.cgi">
+<INPUT TYPE="hidden" NAME="mode" VALUE="file">
+<INPUT TYPE="hidden" NAME="id" VALUE="#CHK:id#">
+<INPUT TYPE="hidden" NAME="pwd" VALUE="#CHK:pwd#">
+<INPUT TYPE="hidden" NAME="wid" VALUE="#CHK:wid#">
+<INPUT TYPE="hidden" NAME="wword" VALUE="#CHK:word#">
+
+<DIV ALIGN="center">
+<TABLE WIDTH="95%" BORDER="1" CELLPADDING="3" CELLSPACING="0">
+<TR>
+  <TH CLASS="h" COLSPAN="2">■ #CHK:fhead# ■</TH>
+</TR>
+<TR>
+  <TH CLASS="h">作品名</TH>
+  <TD CLASS="d">
+    #CHK:word# #CHK:hno# （#CHK:ruby#）
+  </TD>
+</TR>
+<TR>
+  <TH CLASS="h">ファイル</TH>
+  <TD CLASS="d">
+    <SPAN CLASS="attention">※ あなたが登録したもの以外は修正、削除できません。</SPAN>
+    <HR NOSHADE SIZE="1">
+    #CHK:files#
+  </TD>
+</TR>
+<TR>
+  <TH CLASS="h" COLSPAN="2">
+    <INPUT TYPE="submit" NAME="fileexec" VALUE="登録">
+    <INPUT TYPE="reset" VALUE="書き直し">
+  </TH>
+</TR>
+</TABLE>
+</DIV>
+</TEMPLATE>
+
+
+
+
+
+<!-- ******************** パーツ：ファイル ******************** -->
+<TEMPLATE_PARTS NAME="wfiles">
+<SPAN CLASS="emp">[#CHK:fcnt#:#CHK:fstatus#]</SPAN>
+<INPUT TYPE="hidden" NAME="wf#CHK:fcnt#_fid" VALUE="#CHK:fid#">
+<INPUT TYPE="hidden" NAME="wf#CHK:fcnt#_foname" VALUE="#CHK:fname#">
+<INPUT TYPE="hidden" NAME="wf#CHK:fcnt#_fosize" VALUE="#CHK:fsize#">
+<INPUT TYPE="hidden" NAME="wf#CHK:fcnt#_fscd" VALUE="#CHK:fscd#">
+#CHK:fdcs#
+<INPUT TYPE="checkbox" NAME="wf#CHK:fcnt#_del" VALUE="1">削除
+#CHK:fdce#
+<BR>
+ファイル説明（<B><font color=#ff0000>必須</font></B>）：<INPUT TYPE="text" NAME="wf#CHK:fcnt#_title" SIZE="30" VALUE="#CHK:ftitle#" onChange="checkFileUpdate(#CHK:fcnt#);"><BR>
+ファイル<font color=#ff0000>(※ファイル名は英数字のみ)</font>：<INPUT TYPE="file" NAME="wf#CHK:fcnt#_file" SIZE="50" onChange="checkFileUpdate(#CHK:fcnt#);">
+#CHK:ofile#<BR>
+<HR NOSHADE SIZE="1">
+</TEMPLATE_PARTS>
+
+
+<TEMPLATE_PARTS NAME="wfiles_text">
+<INPUT TYPE="hidden" NAME="wf#CHK:fcnt#_fid" VALUE="#CHK:fid#">
+<SPAN CLASS="cool">[#CHK:fcnt#:#CHK:fstatus#]</SPAN>
+<SPAN CLASS="weak">
+<B>登録者</B>：#CHK:fuid#、
+<B>更新日時</B>：#CHK:mdate#
+<BR>
+<B>ファイル</B>：#CHK:ofile#<BR>
+<B>タイトル</B>：#CHK:ftitle#
+</SPAN>
+<HR NOSHADE SIZE="1">
+</TEMPLATE_PARTS>
+
+
+
+
+
+<!-- ******************** 作業完了時 ******************** -->
+<!--
+<TEMPLATE TYPE="finish">-->
+<TABLE WIDTH="80%" BORDER="1"><TR><TD CLASS="d">
+#CHK:field#
+</TD></TR></TABLE>
+
+<HR NOSHADE SIZE="1">
+<DIV CLASS="normal">
+<FORM name="form" method="post" action="tdpusr.cgi" enctype="application/x-www-urlencoded">
+<INPUT TYPE="hidden" NAME="id" VALUE="#CHK:id#">
+<INPUT TYPE="hidden" NAME="pwd" VALUE="#CHK:pwd#">
+<INPUT TYPE="submit" NAME="back" VALUE="ユーザメニューのトップへ戻る">
+</FORM>
+</DIV>
+</TEMPLATE>
+
+
+
+
+
+<BR><BR><BR><BR><BR>
+#CHK:copyright#
+
+
+</BODY>
+</HTML>
